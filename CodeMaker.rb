@@ -12,6 +12,24 @@ class CodeMaker
     generate_random_code
   end
 
+  def feedback_message(break_pattern)
+    fb = feedback(break_pattern)
+
+    puts "#{fb[:same]} identical | #{fb[:value]} correct value"
+  end
+  
+
+  private
+  # Generates a code with 4 random elements from @possibilites
+  def generate_random_code
+    elements = []
+    4.times do
+      p = rand(self.possibilites.length)
+      elements << self.possibilites[p]
+    end
+    self.pattern = elements
+  end
+
   # Gives feedback on a given break pattern
   def feedback(break_pattern)
     fb = {same: 0, value: 0}
@@ -29,16 +47,5 @@ class CodeMaker
       end
     end
     fb
-  end
-
-  private
-  # Generates a code with 4 random elements from @possibilites
-  def generate_random_code
-    elements = []
-    4.times do
-      p = rand(self.possibilites.length)
-      elements << self.possibilites[p]
-    end
-    self.pattern = elements
   end
 end
