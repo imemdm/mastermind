@@ -7,19 +7,36 @@ class CodeMaker
     @pattern = nil
   end
 
-  # Generates a code with 4 random elements from @possibilites
+  # Public method that generates codes
   def code
     generate_random_code
   end
 
+  # Gives feedback on a given break pattern
   def feedback(break_pattern)
-
+    fb = {same: 0, value: 0}
+    self.pattern.each_with_index do |pt, pt_id|
+      break_pattern.each_with_index do |bp, bp_id|
+        if bp == pt && bp_id == pt_id
+          fb[:same] += 1
+          break_pattern[bp_id] = 'x'
+          break
+        elsif bp == pt
+          fb[:value] += 1
+          break_pattern[bp_id] = 'x'
+          break
+        end
+      end
+    end
+    fb
   end
 
+  private
+  # Generates a code with 4 random elements from @possibilites
   def generate_random_code
     elements = []
     4.times do
-      p = rand(4)
+      p = rand(self.possibilites.length)
       elements << self.possibilites[p]
     end
     self.pattern = elements
