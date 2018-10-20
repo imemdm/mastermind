@@ -1,13 +1,13 @@
 class CodeBreaker
-  attr_reader :guesses
+  attr_accessor :guesses
 
   def initialize
-    @guesses = []
+    @guesses = nil
   end
 
   # Generic method that outputs all guesses
   def guess
-    handle_input
+    self.guesses = handle_input
   end
 
   private
@@ -19,15 +19,16 @@ class CodeBreaker
 
   # Handles the guess process from a human player's perspective
   def handle_input
+    gs = []
     4.times do |i|
       g = nil
       loop do
         g = single(i + 1)
         break if valid_guess?(g)
       end
-      self.guesses << g
+      gs << g
     end
-    guesses
+    gs
   end
 
   # Checks each guess for validity

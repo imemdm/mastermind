@@ -1,10 +1,11 @@
 class CodeMaker
   attr_reader :possibilites
-  attr_accessor :pattern
+  attr_accessor :pattern, :points
 
   def initialize
     @possibilites = [0, 1, 2, 3, 4, 5, 6]
     @pattern = nil
+    @points = 0
   end
 
   # Public method that generates codes
@@ -14,11 +15,17 @@ class CodeMaker
 
   def feedback_message(break_pattern)
     fb = feedback(break_pattern)
-
     puts "#{fb[:same]} identical | #{fb[:value]} correct value"
   end
-  
 
+  def guessed?(break_pattern)
+    break_pattern == self.pattern
+  end
+
+  def add_point
+    self.points += 1
+  end
+  
   private
   # Generates a code with 4 random elements from @possibilites
   def generate_random_code
