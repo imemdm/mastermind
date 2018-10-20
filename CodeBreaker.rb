@@ -10,6 +10,10 @@ class CodeBreaker
     self.guesses = handle_input
   end
 
+  def announce_guessed(t)
+    puts "Guessed the correct pattern in #{t} turns"
+  end
+
   private
   # Handles a single guess
   def single(pos)

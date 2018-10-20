@@ -25,6 +25,10 @@ class CodeMaker
   def add_point
     self.points += 1
   end
+
+  def announce_points(p)
+    puts "Breaker gets #{p} points from this round"
+  end
   
   private
   # Generates a code with 4 random elements from @possibilites
