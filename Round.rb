@@ -12,21 +12,19 @@ class Round
       announce_turn(i + 1)
       break unless next_turn(i + 1)
       self.maker.add_point if i == 11
-      self,maker.announce_points(self.maker.points)
     end
+    self.maker.announce_points(self.maker.points)
   end
 
   private
   def next_turn(count)
-    guesses = @breaker.guess
-    @maker.feedback_message(guesses)
-
-    if self.maker.guessed?(guesses)
-      self.braker.announce_guessed(count)
-      self,maker.announce_points(self.maker.points)
+    current_guess = @breaker.guess
+    @maker.feedback_message(current_guess)
+    p current_guess
+    if self.maker.guessed?(current_guess)
+      self.breaker.announce_guessed(count)
       false
     else
-
       self.maker.add_point
       true
     end

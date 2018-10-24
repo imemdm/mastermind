@@ -13,21 +13,25 @@ class CodeMaker
     generate_random_code
   end
 
+  # Displays properly formatted feedback in the console
   def feedback_message(break_pattern)
     fb = feedback(break_pattern)
     puts "#{fb[:same]} identical | #{fb[:value]} correct value"
   end
 
+  # Checks if the pattern has be guessed
   def guessed?(break_pattern)
     break_pattern == self.pattern
   end
 
+  # Points increase after each wrong guess
   def add_point
     self.points += 1
   end
 
+  # Display points scored at the end of the round
   def announce_points(p)
-    puts "Breaker gets #{p} points from this round"
+    puts "Code Maker gets #{p} points from this round"
   end
   
   private
@@ -42,7 +46,8 @@ class CodeMaker
   end
 
   # Gives feedback on a given break pattern
-  def feedback(break_pattern)
+  def feedback(code)
+    break_pattern = code.dup
     fb = {same: 0, value: 0}
     self.pattern.each_with_index do |pt, pt_id|
       break_pattern.each_with_index do |bp, bp_id|
