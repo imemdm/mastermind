@@ -30,8 +30,8 @@ class CodeMaker
   end
 
   # Display points scored at the end of the round
-  def announce_points(p)
-    puts "Code Maker gets #{p} points from this round"
+  def announce_points
+    puts "Code Maker gets #{self.points} points from this round"
   end
   
   private

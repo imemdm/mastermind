@@ -1,7 +1,7 @@
 class CodeBreaker
   attr_accessor :guesses
 
-  def initialize
+  def initialize()
     @guesses = nil
   end
 

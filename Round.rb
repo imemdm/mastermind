@@ -13,7 +13,8 @@ class Round
       break unless next_turn(i + 1)
       self.maker.add_point if i == 11
     end
-    self.maker.announce_points(self.maker.points)
+    self.maker.announce_points
+    self.maker.points
   end
 
   private
