@@ -20,7 +20,7 @@ class Round
   private
   def next_turn(count)
     current_guess = @breaker.guess
-    @maker.feedback_message(current_guess)
+    @maker.show_feedback(current_guess)
     p current_guess
     if self.maker.guessed?(current_guess)
       self.breaker.announce_guessed(count)

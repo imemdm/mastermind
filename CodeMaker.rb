@@ -14,7 +14,7 @@ class CodeMaker
   end
 
   # Displays properly formatted feedback in the console
-  def feedback_message(break_pattern)
+  def show_feedback(break_pattern)
     fb = feedback(break_pattern)
     puts "#{fb[:same]} identical | #{fb[:value]} correct value"
   end
@@ -48,20 +48,31 @@ class CodeMaker
   # Gives feedback on a given break pattern
   def feedback(code)
     break_pattern = code.dup
+    pattern = self.pattern.dup
     fb = {same: 0, value: 0}
-    self.pattern.each_with_index do |pt, pt_id|
+
+    pattern.each_with_index do |pt, pt_id|
       break_pattern.each_with_index do |bp, bp_id|
         if bp == pt && bp_id == pt_id
           fb[:same] += 1
-          break_pattern[bp_id] = 'x'
-          break
-        elsif bp == pt
-          fb[:value] += 1
-          break_pattern[bp_id] = 'x'
+          pattern[pt_id] = "o"
+          break_pattern[bp_id] = "x"
           break
         end
       end
     end
+
+    pattern.each_with_index do |pt, pt_id|
+      break_pattern.each_with_index do |bp, bp_id|
+        if bp == pt
+          fb[:value] += 1
+          pattern[pt_id] = "o"
+          break_pattern[bp_id] = "x"
+          break
+        end
+      end
+    end
+    puts self.pattern
     fb
   end
 end
