@@ -9,8 +9,12 @@ class CodeMaker
   end
 
   # Public method that generates codes
-  def code
-    generate_random_code
+  def code(name)
+    if name == "Human"
+      handle_code_input
+    else
+      generate_random_code
+    end
   end
 
   # Displays properly formatted feedback in the console
@@ -37,12 +41,31 @@ class CodeMaker
   private
   # Generates a code with 4 random elements from @possibilites
   def generate_random_code
-    elements = []
+    code = []
     4.times do
       p = rand(self.possibilites.length)
-      elements << self.possibilites[p]
+      code << self.possibilites[p]
     end
-    self.pattern = elements
+    self.pattern = code
+  end
+
+  def handle_code_input
+    puts "Create a pattern..."
+    code = []
+    4.times do |i|
+      n = -1
+      loop do
+        print "Enter a number: "
+        n = gets.chomp.to_i
+        break if valid_entry?(n)
+      end
+      code << n
+    end
+    self.pattern = code
+  end
+
+  def valid_entry?(n)
+    n >= 0 && n <= 6
   end
 
   # Gives feedback on a given break pattern
@@ -72,7 +95,6 @@ class CodeMaker
         end
       end
     end
-    puts self.pattern
     fb
   end
 end

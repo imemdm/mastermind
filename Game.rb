@@ -21,7 +21,7 @@ class Game
     rounds_count
     assign_players
     self.rounds.times do |i|
-      r = Round.new(self.p1.maker, self.p2.breaker)
+      r = Round.new(self.p1, self.p2)
       points = r.play
       self.p1.increase_total(points)
       show_current_score

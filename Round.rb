@@ -1,10 +1,10 @@
 class Round
   attr_reader :maker, :breaker
   
-  def initialize(maker, breaker)
-    @maker = maker
-    @breaker = breaker
-    @maker.code
+  def initialize(p1, p2)
+    @maker = p1.maker
+    @breaker = p2.breaker
+    @maker.code(p1.name)
   end
 
   def play
