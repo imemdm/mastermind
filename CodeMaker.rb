@@ -1,9 +1,9 @@
 class CodeMaker
-  attr_reader :possibilites
   attr_accessor :pattern, :points
+  attr_reader :name
 
-  def initialize
-    @possibilites = [0, 1, 2, 3, 4, 5, 6]
+  def initialize(name)
+    @name = name
     @pattern = nil
     @points = 0
   end
@@ -35,6 +35,7 @@ class CodeMaker
 
   # Display points scored at the end of the round
   def announce_points
+    puts "\n"
     puts "Code Maker gets #{self.points} points from this round"
   end
   
@@ -43,8 +44,7 @@ class CodeMaker
   def generate_random_code
     code = []
     4.times do
-      p = rand(self.possibilites.length)
-      code << self.possibilites[p]
+      code << rand(0..6)
     end
     self.pattern = code
   end

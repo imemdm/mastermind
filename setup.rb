@@ -1,8 +1,6 @@
 require "./Player.rb"
 require "./CodeMaker.rb"
 require "./CodeBreaker.rb"
-require "./Human.rb"
-require "./Computer.rb"
 require "./Round.rb"
 require "./Game.rb"
 

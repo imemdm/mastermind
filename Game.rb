@@ -4,8 +4,8 @@ class Game
 
   def initialize(first_in)
     @first_in = first_in
-    @human = Human.new("Human")
-    @computer = Computer.new("Computer") 
+    @human = Player.new("Human")
+    @computer = Player.new("Computer") 
   end
 
   def rounds_count
@@ -27,6 +27,7 @@ class Game
       show_current_score
       switch_players
     end
+    final_score
   end
 
   private
@@ -45,9 +46,16 @@ class Game
   end
 
   def show_current_score
-    puts "Score:"
-    puts "#{self.human.name} | #{self.human.total_points}"
-    puts "--------"
-    puts "#{self.computer.name} | #{self.computer.total_points}"
+    puts "Score: #{self.human.name} #{self.human.total_points} | #{self.computer.name} #{self.computer.total_points}".ljust(40)
+  end
+
+  def final_score
+    if self.human.total_points > self.computer.total_points
+      puts "You have won #{self.human.total_points} to #{self.computer.total_points}"
+    elsif self.human.total_points < self.computer.total_points
+      puts "Computer has won #{self.computer.total_points} to #{self.human.total_points}"
+    else
+      puts "It's a tie."
+    end
   end
 end

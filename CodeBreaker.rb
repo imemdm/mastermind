@@ -1,13 +1,19 @@
 class CodeBreaker
   attr_accessor :guesses
+  attr_reader :name
 
-  def initialize()
+  def initialize(name)
+    @name = name
     @guesses = nil
   end
 
   # Generic method that outputs all guesses
-  def guess
-    self.guesses = handle_input
+  def guess(name)
+    if name == "Computer"
+      self.guesses = generate_guesses
+    else
+      self.guesses = handle_input
+    end
   end
 
   def announce_guessed(t)
@@ -33,6 +39,14 @@ class CodeBreaker
       gs << g
     end
     gs
+  end
+
+  def generate_guesses
+    guesses = []
+    4.times do
+      guesses << rand(0..6) 
+    end
+    guesses
   end
 
   # Checks each guess for validity

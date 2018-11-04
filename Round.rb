@@ -4,7 +4,7 @@ class Round
   def initialize(p1, p2)
     @maker = p1.maker
     @breaker = p2.breaker
-    @maker.code(p1.name)
+    @maker.code(@maker.name)
   end
 
   def play
@@ -19,7 +19,7 @@ class Round
 
   private
   def next_turn(count)
-    current_guess = @breaker.guess
+    current_guess = @breaker.guess(self.breaker.name)
     @maker.show_feedback(current_guess)
     p current_guess
     if self.maker.guessed?(current_guess)

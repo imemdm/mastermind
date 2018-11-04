@@ -12,10 +12,10 @@ class Player
   end
 
   def maker
-    CodeMaker.new
+    CodeMaker.new(self.name)
   end
 
   def breaker
-    CodeBreaker.new
+    CodeBreaker.new(self.name)
   end
 end
