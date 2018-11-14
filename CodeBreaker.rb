@@ -1,18 +1,19 @@
 class CodeBreaker
-  attr_accessor :guesses
-  attr_reader :name
+  attr_accessor :guess
+  attr_reader :name, :ai
 
   def initialize(name)
+    @ai = AI.new
     @name = name
-    @guesses = nil
+    @guess = nil
   end
 
   # Generic method that outputs all guesses
-  def guess(name)
+  def act(name, data)
     if name == "Computer"
-      self.guesses = generate_guesses
+      self.guess = generate_guess(data)
     else
-      self.guesses = handle_input
+      self.guess = handle_input
     end
   end
 
@@ -41,16 +42,21 @@ class CodeBreaker
     gs
   end
 
-  def generate_guesses
-    guesses = []
-    4.times do
-      guesses << rand(0..6) 
+  def generate_guess(old_data)
+    code = []
+    if self.ai.nil?
+      4.times do 
+        code << rand(6)
+      end
+    else
+      code = self.ai.attempt(old_data)
     end
-    guesses
+
+    code
   end
 
   # Checks each guess for validity
   def valid_guess?(input)
-    input >= 0 && input <= 6
+    input >= 0 && input <= 5
   end
 end

@@ -2,7 +2,7 @@ class CodeMaker
   attr_accessor :pattern, :points
   attr_reader :name
 
-  def initialize(name)
+  def initialize(name = nil)
     @name = name
     @pattern = nil
     @points = 0
@@ -19,8 +19,40 @@ class CodeMaker
 
   # Displays properly formatted feedback in the console
   def show_feedback(break_pattern)
-    fb = feedback(break_pattern)
-    puts "#{fb[:same]} identical | #{fb[:value]} correct value"
+    puts "Guess: #{break_pattern}"
+    puts "Pattern: #{self.pattern}"
+    fb = feedback(break_pattern, self.pattern)
+    puts "#{fb[0]} identical | #{fb[1]} correct value"
+  end
+
+  # Gives feedback on a given break pattern
+  def feedback(guess, code)
+    break_pattern = guess.dup
+    pattern = code.dup
+    fb = [0, 0]
+
+    pattern.each_with_index do |pt, pt_id|
+      break_pattern.each_with_index do |bp, bp_id|
+        if bp == pt && bp_id == pt_id
+          fb[0] += 1
+          pattern[pt_id] = "o"
+          break_pattern[bp_id] = "x"
+          break
+        end
+      end
+    end
+
+    pattern.each_with_index do |pt, pt_id|
+      break_pattern.each_with_index do |bp, bp_id|
+        if bp == pt
+          fb[1] += 1
+          pattern[pt_id] = "o"
+          break_pattern[bp_id] = "x"
+          break
+        end
+      end
+    end
+    fb
   end
 
   # Checks if the pattern has be guessed
@@ -44,7 +76,7 @@ class CodeMaker
   def generate_random_code
     code = []
     4.times do
-      code << rand(0..6)
+      code << rand(0..5)
     end
     self.pattern = code
   end
@@ -65,36 +97,6 @@ class CodeMaker
   end
 
   def valid_entry?(n)
-    n >= 0 && n <= 6
-  end
-
-  # Gives feedback on a given break pattern
-  def feedback(code)
-    break_pattern = code.dup
-    pattern = self.pattern.dup
-    fb = {same: 0, value: 0}
-
-    pattern.each_with_index do |pt, pt_id|
-      break_pattern.each_with_index do |bp, bp_id|
-        if bp == pt && bp_id == pt_id
-          fb[:same] += 1
-          pattern[pt_id] = "o"
-          break_pattern[bp_id] = "x"
-          break
-        end
-      end
-    end
-
-    pattern.each_with_index do |pt, pt_id|
-      break_pattern.each_with_index do |bp, bp_id|
-        if bp == pt
-          fb[:value] += 1
-          pattern[pt_id] = "o"
-          break_pattern[bp_id] = "x"
-          break
-        end
-      end
-    end
-    fb
+    n >= 0 && n <= 5
   end
 end
