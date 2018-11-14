@@ -14,6 +14,7 @@ class AI
     @s = @codes.dup
   end
 
+  # Puts togheter all the required logic to make a guess
   def attempt(data)
     g = nil
     if data.empty?
@@ -27,6 +28,8 @@ class AI
   end
 
   private
+  # Finds a guess that would eliminate the most codes
+  # from the possible solutions
   def minimax
     next_guess = nil
     hit_counts = self.codes.map do |guess|
@@ -48,9 +51,6 @@ class AI
     minimums = hit_counts.select do |el|
       el[:hits] == hit_counts[0][:hits]
     end
-    
-    p "Minimums: #{minimums}"
-    p "S: #{self.s}"
 
     minimums.each do |el|
       if self.s.include?(el[:guess])
@@ -58,8 +58,6 @@ class AI
         break
       end
     end
-
-    p "Next guess: #{next_guess}"
     
     next_guess = minimums[0][:guess] if next_guess.nil?
 

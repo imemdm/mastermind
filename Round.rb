@@ -9,6 +9,7 @@ class Round
     @previous_data = {}
   end
 
+  # Plays a single round
   def play
     12.times do |i|
       announce_turn(i + 1)
@@ -20,6 +21,8 @@ class Round
   end
 
   private
+  # Handles the logic for each turn, and check whether the
+  # pattern has been guessed
   def next_turn(count)
     current_guess = self.breaker.act(self.breaker.name, self.previous_data)
     self.maker.show_feedback(current_guess)
@@ -34,6 +37,7 @@ class Round
     end
   end
 
+  # Prints to the console
   def announce_turn(t)
     puts "\nTurn #{t}"
     puts "==============="

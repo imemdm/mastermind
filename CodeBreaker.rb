@@ -17,6 +17,7 @@ class CodeBreaker
     end
   end
 
+  # Displays a message on the console
   def announce_guessed(t)
     puts "Guessed the correct pattern in #{t} turns"
   end
@@ -42,6 +43,7 @@ class CodeBreaker
     gs
   end
 
+  # Required logic for the computer to make a guess
   def generate_guess(old_data)
     code = []
     if self.ai.nil?

@@ -81,6 +81,7 @@ class CodeMaker
     self.pattern = code
   end
 
+  # Human player creates a hidden pattern
   def handle_code_input
     puts "Create a pattern..."
     code = []
@@ -96,6 +97,7 @@ class CodeMaker
     self.pattern = code
   end
 
+  # Checks if the given number is a valid pattern value
   def valid_entry?(n)
     n >= 0 && n <= 5
   end
