@@ -20,7 +20,7 @@ class Game
   # It plays a full game with the given number of rounds
   def run
     rounds.times do |i|
-      r = Round.new(self.p1, self.p2).play
+      r = Round.new(players).play
       players.reverse!
     end
     settle
