@@ -17,15 +17,10 @@ class Game
     players.reverse! if start_as == "1"
   end
 
-
-  # It starts a game by calling a few methods and initializing
-  # a Round object, at the end it calculates the final score
+  # It plays a full game with the given number of rounds
   def run
-    self.rounds.times do |i|
-      r = Round.new(self.p1, self.p2)
-      points = r.play
-      self.p1.increase_total(points)
-      show_current_score
+    rounds.times do |i|
+      r = Round.new(self.p1, self.p2).play
       players.reverse!
     end
     settle
@@ -33,21 +28,17 @@ class Game
 
   private
 
-  attr_accessor :rounds, :players
-  attr_reader :player1, :player2
+  attr_accessor :players
+  attr_reader :player1, :player2, :rounds
 
-  # Displays score after each round
-  def show_current_score
-    puts "Score: #{human.name} #{human.total_points} | #{computer.name} #{computer.total_points}".ljust(40)
-  end
-
-  # Calculates the final score
+  # Compares the scores of both players
   def settle
     puts "Game is a DRAW" if players.firstpoints == players.last.points
     winner = players.sort_by { |player| player.score }.last
     show_winner(winner)
   end
 
+  # Displays details of the winning player
   def winner(game_winner)
     puts "#{game_winner.name.to_s} has won the game with #{game_winner.points}"
   end 
