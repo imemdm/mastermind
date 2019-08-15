@@ -23,29 +23,18 @@ class Game
   # It starts a game by calling a few methods and initializing
   # a Round object, at the end it calculates the final score
   def run
-    rounds_count
-    assign_players
     self.rounds.times do |i|
       r = Round.new(self.p1, self.p2)
       points = r.play
       self.p1.increase_total(points)
       show_current_score
-      switch_players
+      players.reverse!
     end
     final_score
   end
 
   private
-  # Gives both players a role
-  def assign_players
-    if self.first_in == 0
-      @p1 = self.human
-      @p2 = self.computer
-    else
-      @p1 = self.computer
-      @p2 = self.human
-    end
-  end
+
 
   # Switches players at the end of each round
   def switch_players
