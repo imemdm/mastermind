@@ -1,26 +1,28 @@
 class Game
-  attr_accessor :rounds, :p1, :p2
-  attr_reader :human, :computer, :first_in
+  attr_accessor :rounds, :p1, :p2, :players
+  attr_reader :human, :computer
 
-  def initialize(first_in)
-    @first_in = first_in
+  def self.start
+    print "0 to start as a code maker or 1 to start as a code breaker: "
+    start_as = gets.chomp
+
+    print "Rounds to play (even number): "
+    rounds = gets.chomp.to_i
+
+    Game.new(start_as, rounds).run
+  end
+
+  def initialize(start_as)
     @human = Player.new("Human")
-    @computer = Player.new("Computer") 
+    @computer = Player.new("Computer")
+    @players = [human, computer]
+    players.reverse! if start_as == "1"
   end
 
-  # PLayer picks how many round will be played
-  def rounds_count
-    @rounds = 0
-    loop do
-      print "How many rounds do you wanna play(even number): "
-      @rounds = gets.chomp.to_i
-      break if @rounds.even?
-    end
-  end
 
   # It starts a game by calling a few methods and initializing
   # a Round object, at the end it calculates the final score
-  def start
+  def run
     rounds_count
     assign_players
     self.rounds.times do |i|
