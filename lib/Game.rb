@@ -11,9 +11,9 @@ class Game
 
   def initialize(start_as, rounds)
     @rounds = rounds
-    @human = Player.new("Human")
-    @computer = Player.new("Computer")
-    @players = [human, computer]
+    @player1 = Player.new(:human)
+    @player2 = Player.new(:computer)
+    @players = [player1, player2]
     players.reverse! if start_as == "1"
   end
 
@@ -28,32 +28,27 @@ class Game
       show_current_score
       players.reverse!
     end
-    final_score
+    settle
   end
 
   private
 
   attr_accessor :rounds, :players
-  attr_reader :human, :computer
-
-  # Switches players at the end of each round
-  def switch_players
-    self.p1, self.p2 = self.p2, self.p1
-  end
+  attr_reader :player1, :player2
 
   # Displays score after each round
   def show_current_score
-    puts "Score: #{self.human.name} #{self.human.total_points} | #{self.computer.name} #{self.computer.total_points}".ljust(40)
+    puts "Score: #{human.name} #{human.total_points} | #{computer.name} #{computer.total_points}".ljust(40)
   end
 
   # Calculates the final score
-  def final_score
-    if self.human.total_points > self.computer.total_points
-      puts "You have won #{self.human.total_points} to #{self.computer.total_points}"
-    elsif self.human.total_points < self.computer.total_points
-      puts "Computer has won #{self.computer.total_points} to #{self.human.total_points}"
-    else
-      puts "It's a tie."
-    end
+  def settle
+    puts "Game is a DRAW" if players.firstpoints == players.last.points
+    winner = players.sort_by { |player| player.score }.last
+    show_winner(winner)
   end
+
+  def winner(game_winner)
+    puts "#{game_winner.name.to_s} has won the game with #{game_winner.points}"
+  end 
 end
