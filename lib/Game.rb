@@ -1,7 +1,4 @@
 class Game
-  attr_accessor :rounds, :p1, :p2, :players
-  attr_reader :human, :computer
-
   def self.start
     print "0 to start as a code maker or 1 to start as a code breaker: "
     start_as = gets.chomp
@@ -12,7 +9,8 @@ class Game
     Game.new(start_as, rounds).run
   end
 
-  def initialize(start_as)
+  def initialize(start_as, rounds)
+    @rounds = rounds
     @human = Player.new("Human")
     @computer = Player.new("Computer")
     @players = [human, computer]
@@ -35,6 +33,8 @@ class Game
 
   private
 
+  attr_accessor :rounds, :players
+  attr_reader :human, :computer
 
   # Switches players at the end of each round
   def switch_players
