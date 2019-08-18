@@ -2,7 +2,7 @@ class Round
   attr_reader :maker, :breaker
   attr_accessor :previous_data
   
-  def initialize(p1, p2)
+  def initialize(players)
     @maker = p1.maker
     @breaker = p2.breaker
     @maker.code(@maker.name)
