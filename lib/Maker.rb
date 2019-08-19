@@ -9,7 +9,7 @@ class Maker
 
   # Public method that generates codes
   def code
-    if player == :human
+    if player.status == :human
       handle_code_input
     else
       generate_random_code
