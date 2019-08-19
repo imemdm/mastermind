@@ -9,9 +9,9 @@ class Round
 
   # Plays a single round
   def play
-    12.times do |i|
-      announce_turn(i + 1)
+    (1..12).each do |n|
       break unless next_turn(i + 1)
+      puts "\nTurn: #{n} - try again\n"
       self.maker.add_point if i == 11
     end
     self.maker.announce_points
@@ -35,11 +35,5 @@ class Round
       self.maker.add_point
       true
     end
-  end
-
-  # Prints to the console
-  def announce_turn(t)
-    puts "\nTurn #{t}"
-    puts "==============="
   end
 end
