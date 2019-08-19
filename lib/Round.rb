@@ -3,7 +3,7 @@ class Round
   
   def initialize(players)
     @players = players
-    players.first.code(@maker.name)
+    @code = players.first.generate_code
     @previous_data = {}
   end
 
