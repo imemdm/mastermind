@@ -6,16 +6,4 @@ class Player
     @name = name
     @total_points = 0
   end
-
-  def increase_total(round_points)
-    self.total_points += round_points
-  end
-
-  def maker
-    CodeMaker.new(self.name)
-  end
-
-  def breaker
-    CodeBreaker.new(self.name)
-  end
 end
