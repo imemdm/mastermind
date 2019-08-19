@@ -20,7 +20,7 @@ class Round
 
   private
 
-  attr_reader :players
+  attr_reader :players, :code
   # Handles the logic for each turn, and check whether the
   # pattern has been guessed
   def next_turn(count)
