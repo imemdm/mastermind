@@ -1,4 +1,4 @@
-class CodeMaker
+class Maker
   attr_accessor :pattern, :points
 
   def initialize(player)
@@ -9,7 +9,7 @@ class CodeMaker
 
   # Public method that generates codes
   def code
-    if player == :human
+    if player.status == :human
       handle_code_input
     else
       generate_random_code

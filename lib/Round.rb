@@ -2,8 +2,9 @@ class Round
   attr_accessor :previous_data
   
   def initialize(players)
-    @players = players
-    @code = players.first.generate_code
+    @maker = Maker.new(players.first)
+    @breaker = Breaker.new(players.last)
+    @code = maker.code
     @previous_data = {}
   end
 
@@ -20,8 +21,7 @@ class Round
 
   private
 
-  attr_reader :players, :code
-  
+  attr_reader :maker, :breaker, :code
   # Handles the logic for each turn, and check whether the
   # pattern has been guessed
   def next_turn(count)
