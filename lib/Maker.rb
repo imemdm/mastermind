@@ -1,4 +1,4 @@
-class CodeMaker
+class Maker
   attr_accessor :pattern, :points
 
   def initialize(player)

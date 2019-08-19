@@ -1,4 +1,4 @@
-class CodeBreaker
+class Breaker
   attr_accessor :guess
   attr_reader :name, :ai
 
