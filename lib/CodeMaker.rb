@@ -1,16 +1,15 @@
 class CodeMaker
   attr_accessor :pattern, :points
-  attr_reader :name
 
-  def initialize(name = nil)
-    @name = name
+  def initialize(player)
+    @player = player
     @pattern = nil
     @points = 0
   end
 
   # Public method that generates codes
-  def code(name)
-    if name == "Human"
+  def code
+    if player == :human
       handle_code_input
     else
       generate_random_code
@@ -72,6 +71,8 @@ class CodeMaker
   end
   
   private
+
+  attr_reader :player
   # Generates a code with 4 random elements from @possibilites
   def generate_random_code
     code = []
