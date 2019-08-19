@@ -4,7 +4,7 @@ class Round
   def initialize(players)
     @maker = Maker.new(players.first)
     @breaker = Breaker.new(players.last)
-    @code = maker.generate_code
+    @code = maker.code
     @previous_data = {}
   end
 
