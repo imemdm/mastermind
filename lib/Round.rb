@@ -2,8 +2,9 @@ class Round
   attr_accessor :previous_data
   
   def initialize(players)
-    @players = players
-    @code = players.first.generate_code
+    @maker = Maker.new(players.first)
+    @breaker = Breaker.new(players.last)
+    @code = maker.generate_code
     @previous_data = {}
   end
 
