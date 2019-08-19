@@ -9,11 +9,11 @@ class Round
 
   # Plays a single round
   def play
-    (1..12).each do |n|
-      break unless next_turn(i + 1)
+    12.times do |n|
+      break if guessed?
       puts "\nTurn: #{n} - try again\n"
-      self.maker.add_point if i == 11
     end
+    complete
     self.maker.announce_points
     self.maker.points
   end
@@ -21,6 +21,7 @@ class Round
   private
 
   attr_reader :players, :code
+  
   # Handles the logic for each turn, and check whether the
   # pattern has been guessed
   def next_turn(count)
@@ -35,5 +36,13 @@ class Round
       self.maker.add_point
       true
     end
+  end
+
+  def guessed?
+
+  end
+
+  def complete
+
   end
 end
