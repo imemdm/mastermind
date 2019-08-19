@@ -21,7 +21,7 @@ class Round
 
   private
 
-  attr_reader :players, :code
+  attr_reader :maker, :breaker, :code
   # Handles the logic for each turn, and check whether the
   # pattern has been guessed
   def next_turn(count)
