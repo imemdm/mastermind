@@ -21,6 +21,7 @@ class Round
   private
 
   attr_reader :maker, :breaker
+  
   # Handles the logic for each turn, and check whether the
   # pattern has been guessed
   def next_turn(count)
@@ -38,7 +39,7 @@ class Round
   end
 
   def guessed?
-
+    maker.code == breaker.current_guess
   end
 
   def complete

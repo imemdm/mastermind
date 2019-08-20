@@ -24,6 +24,7 @@ class Breaker
   private
 
   attr_writer: current_guess
+  
   # Handles a single guess
   def single(pos)
     print "Guess position #{pos}: "
