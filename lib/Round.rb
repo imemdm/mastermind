@@ -4,7 +4,6 @@ class Round
   def initialize(players)
     @maker = Maker.new(players.first)
     @breaker = Breaker.new(players.last)
-    @code = maker.code
     @previous_data = {}
   end
 
@@ -21,7 +20,7 @@ class Round
 
   private
 
-  attr_reader :maker, :breaker, :code
+  attr_reader :maker, :breaker
   # Handles the logic for each turn, and check whether the
   # pattern has been guessed
   def next_turn(count)
@@ -39,7 +38,7 @@ class Round
   end
 
   def guessed?
-    
+
   end
 
   def complete
