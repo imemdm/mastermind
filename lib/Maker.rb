@@ -3,18 +3,11 @@ class Maker
 
   def initialize(player)
     @player = player
+    @code = generate_code
     @pattern = nil
     @points = 0
   end
 
-  # Public method that generates codes
-  def code
-    if player.status == :human
-      handle_code_input
-    else
-      generate_random_code
-    end
-  end
 
   # Displays properly formatted feedback in the console
   def show_feedback(break_pattern)
@@ -73,6 +66,16 @@ class Maker
   private
 
   attr_reader :player
+
+  def generate_code
+    if player.status == :human
+      handle_code_input
+    else
+      generate_random_code
+    end
+  end
+
+
   # Generates a code with 4 random elements from @possibilites
   def generate_random_code
     code = []

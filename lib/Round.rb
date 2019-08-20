@@ -39,7 +39,7 @@ class Round
   end
 
   def guessed?
-
+    
   end
 
   def complete
