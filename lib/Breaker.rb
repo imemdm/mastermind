@@ -1,19 +1,18 @@
 class Breaker
-  attr_accessor :guess
-  attr_reader :name, :ai
+  attr_reader :name, :ai, :current_guess
 
   def initialize(name)
     @ai = AI.new
     @name = name
-    @guess = nil
+    @current_guess = nil
   end
 
   # Generic method that outputs all guesses
-  def act(name, data)
+  def guess(name, data)
     if name == "Computer"
-      self.guess = generate_guess(data)
+      self.current_guess = generate_guess(data)
     else
-      self.guess = handle_input
+      self.current_guess = handle_input
     end
   end
 
@@ -23,6 +22,8 @@ class Breaker
   end
 
   private
+
+  attr_writer: current_guess
   # Handles a single guess
   def single(pos)
     print "Guess position #{pos}: "
