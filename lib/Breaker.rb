@@ -1,15 +1,15 @@
 class Breaker
   attr_reader :name, :ai, :current_guess
 
-  def initialize(name)
+  def initialize(player)
     @ai = AI.new
-    @name = name
+    @player = player
     @current_guess = nil
   end
 
   # Generic method that outputs all guesses
   def guess(name, data)
-    if name == "Computer"
+    if player.status == :computer
       self.current_guess = generate_guess(data)
     else
       self.current_guess = handle_input
