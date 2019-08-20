@@ -8,7 +8,6 @@ class Maker
     @points = 0
   end
 
-
   # Displays properly formatted feedback in the console
   def show_feedback(break_pattern)
     puts "Guess: #{break_pattern}"

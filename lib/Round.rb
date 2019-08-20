@@ -11,7 +11,8 @@ class Round
   def play
     12.times do |n|
       break if guessed?
-      puts "\nTurn: #{n} - try again\n"
+      puts "\nTurn: #{n + 1} - try again\n"
+      turn
     end
     complete
     self.maker.announce_points
@@ -21,6 +22,10 @@ class Round
   private
 
   attr_reader :maker, :breaker
+
+  def turn
+    
+  end
   
   # Handles the logic for each turn, and check whether the
   # pattern has been guessed

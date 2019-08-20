@@ -10,9 +10,9 @@ class Breaker
   # Generic method that outputs all guesses
   def guess(name, data)
     if player.status == :computer
-      self.current_guess = generate_guess(data)
+      current_guess = generate_guess(data)
     else
-      self.current_guess = handle_input
+      current_guess = handle_input
     end
   end
 
@@ -48,14 +48,13 @@ class Breaker
   # Required logic for the computer to make a guess
   def generate_guess(old_data)
     code = []
-    if self.ai.nil?
+    if ai.nil?
       4.times do 
         code << rand(6)
       end
     else
-      code = self.ai.attempt(old_data)
+      code = ai.attempt(old_data)
     end
-
     code
   end
 
