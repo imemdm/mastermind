@@ -10,9 +10,9 @@ class Round
   # Plays a single round
   def play
     12.times do |n|
-      break if guessed?
       puts "\nTurn: #{n + 1} - try again\n"
       turn
+      break if guessed?
     end
     complete
     self.maker.announce_points
@@ -24,7 +24,11 @@ class Round
   attr_reader :maker, :breaker
 
   def turn
-    
+    g = breaker.guess
+    puts "Guess: #{g}"
+    fb = maker.give_feedback
+    puts "Feedback: #{fb}"
+    maker.previous = [g, fb]
   end
   
   # Handles the logic for each turn, and check whether the
