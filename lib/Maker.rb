@@ -45,22 +45,6 @@ class Maker
     end
     fb
   end
-
-  # Checks if the pattern has be guessed
-  def guessed?(break_pattern)
-    break_pattern == self.pattern
-  end
-
-  # Points increase after each wrong guess
-  def add_point
-    self.points += 1
-  end
-
-  # Display points scored at the end of the round
-  def announce_points
-    puts "\n"
-    puts "Code Maker gets #{self.points} points from this round"
-  end
   
   private
 
