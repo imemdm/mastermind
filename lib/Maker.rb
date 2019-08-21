@@ -7,6 +7,9 @@ class Maker
     @pattern = nil
   end
 
+  def give_feedback(on: guess)
+  end
+
   # Displays properly formatted feedback in the console
   def show_feedback(break_pattern)
     puts "Guess: #{break_pattern}"
