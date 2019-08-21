@@ -5,7 +5,6 @@ class Maker
     @player = player
     @code = generate_code
     @pattern = nil
-    @points = 0
   end
 
   # Displays properly formatted feedback in the console
@@ -57,7 +56,6 @@ class Maker
       generate_random_code
     end
   end
-
 
   # Generates a code with 4 random elements from @possibilites
   def generate_random_code
