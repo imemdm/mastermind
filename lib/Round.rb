@@ -1,24 +1,24 @@
-class Round
-  attr_accessor :previous_data
-  
+class Round  
   def initialize(players)
     @maker = Maker.new(players.first)
     @breaker = Breaker.new(players.last)
-    @previous_data = {}
+    @round_score = 0
   end
 
   # Plays a single round
   def play
-    12.times do |n|
-      puts "\nTurn: #{n + 1} - try again\n"
+    1.upto(12) do |counter|
+      puts "\nTurn: #{counter} - try again\n"
       turn
       break if guessed?
+      round_score = counter
     end
     complete
   end
 
   private
 
+  attr_accessor :round_score
   attr_reader :maker, :breaker
 
   def turn
