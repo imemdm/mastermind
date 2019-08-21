@@ -2,8 +2,8 @@ class Breaker
   attr_reader :name, :ai, :current_guess
 
   def initialize(player)
-    @ai = AI.new
     @player = player
+    @ai = AI.new
     @current_guess = nil
   end
 
@@ -18,7 +18,7 @@ class Breaker
 
   private
 
-  attr_writer: current_guess
+  attr_writer :current_guess
   
   # Handles a single guess
   def single(pos)
@@ -44,9 +44,7 @@ class Breaker
   def generate_guess(old_data)
     code = []
     if ai.nil?
-      4.times do 
-        code << rand(6)
-      end
+      4.times { code << rand(6) }
     else
       code = ai.attempt(old_data)
     end
