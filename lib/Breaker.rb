@@ -16,11 +16,6 @@ class Breaker
     end
   end
 
-  # Displays a message on the console
-  def announce_guessed(t)
-    puts "Guessed the correct pattern in #{t} turns"
-  end
-
   private
 
   attr_writer: current_guess
