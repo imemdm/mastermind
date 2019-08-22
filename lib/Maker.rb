@@ -11,6 +11,11 @@ class Maker
     code
       .map.with_index { |el, idx| on[idx] == el ? "both" : el }
       .map.with_index { |el, idx| on.include?(el) ? "value" : el }
+      reduce([0, 0]) do |fb, peg|
+        fb[0] += 1 if peg == "both"
+        fb[1] += 1 if peg == "value"
+        fb
+      end
   end
 
   # Displays properly formatted feedback in the console
