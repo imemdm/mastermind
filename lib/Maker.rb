@@ -27,25 +27,4 @@ class Maker
   def random_code
     [0, 0, 0, 0].map { |n| rand(6) }
   end
-
-  # Human player creates a hidden pattern
-  def handle_code_input
-    puts "Create a pattern..."
-    code = []
-    4.times do |i|
-      n = -1
-      loop do
-        print "Enter a number: "
-        n = gets.chomp.to_i
-        break if valid_entry?(n)
-      end
-      code << n
-    end
-    self.pattern = code
-  end
-
-  # Checks if the given number is a valid pattern value
-  def valid_entry?(n)
-    n >= 0 && n <= 5
-  end
 end
