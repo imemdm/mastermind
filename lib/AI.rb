@@ -69,8 +69,8 @@ class AI
   # same response as the hidden pattern against a guess
   def eliminate(collection, data)
     collection.select do |solution|
-      fb = maker.feedback(data[:guess], solution)
-      fb[0] == data[:feedback][0] && fb[1] == data[:feedback][1]
+      fb = maker.give_feedback(data[0], solution)
+      fb[0] == data[1][0] && fb[1] == data[1][1]
     end
   end
 end

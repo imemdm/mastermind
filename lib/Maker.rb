@@ -4,7 +4,7 @@ class Maker
     @code = generate_code
   end
 
-  def give_feedback(on:)
+  def give_feedback(on:, code = self.code)
     code
       .map.with_index { |el, idx| on[idx] == el ? "both" : el }
       .map.with_index { |el, idx| on.include?(el) ? "value" : el }
