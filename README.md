@@ -1,4 +1,4 @@
-# Command line Mastermind game implemented in Ruby with OOP
+## Command line Mastermind game implemented in Ruby with OOP
 
 ### Features
 
