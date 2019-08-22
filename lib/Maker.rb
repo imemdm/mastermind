@@ -17,44 +17,6 @@ class Maker
         fb
       end
   end
-
-  # Displays properly formatted feedback in the console
-  def show_feedback(break_pattern)
-    puts "Guess: #{break_pattern}"
-    puts "Pattern: #{self.pattern}"
-    fb = feedback(break_pattern, self.pattern)
-    puts "#{fb[0]} identical | #{fb[1]} correct value"
-  end
-
-  # Gives feedback on a given break pattern
-  def feedback(guess, code)
-    break_pattern = guess.dup
-    pattern = code.dup
-    fb = [0, 0]
-
-    pattern.each_with_index do |pt, pt_id|
-      break_pattern.each_with_index do |bp, bp_id|
-        if bp == pt && bp_id == pt_id
-          fb[0] += 1
-          pattern[pt_id] = "o"
-          break_pattern[bp_id] = "x"
-          break
-        end
-      end
-    end
-
-    pattern.each_with_index do |pt, pt_id|
-      break_pattern.each_with_index do |bp, bp_id|
-        if bp == pt
-          fb[1] += 1
-          pattern[pt_id] = "o"
-          break_pattern[bp_id] = "x"
-          break
-        end
-      end
-    end
-    fb
-  end
   
   private
 
