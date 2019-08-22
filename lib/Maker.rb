@@ -7,7 +7,10 @@ class Maker
     @pattern = nil
   end
 
-  def give_feedback(on: guess)
+  def give_feedback(on:)
+    code
+      .map.with_index { |el, idx| on[idx] == el ? "both" : el }
+      .map.with_index { |el, idx| on.include?(el) ? "value" : el }
   end
 
   # Displays properly formatted feedback in the console
