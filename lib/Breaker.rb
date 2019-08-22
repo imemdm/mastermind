@@ -1,10 +1,12 @@
 class Breaker
+  attr_writer :previous_data
   attr_reader :ai, :current_guess
 
   def initialize(player)
     @player = player
     @ai = AI.new
     @current_guess = nil
+    @previous_data = nil
   end
 
   # Generic method that outputs all guesses
@@ -16,6 +18,7 @@ class Breaker
   private
 
   attr_writer :current_guess
+  attr_reader :previous_data
 
   # Required logic for the computer to make a guess
   def generate_guess(old_data)
@@ -23,7 +26,7 @@ class Breaker
     if ai.nil?
       4.times { code << rand(6) }
     else
-      code = ai.attempt(old_data)
+      code = ai.attempt(previous_data)
     end
     code
   end

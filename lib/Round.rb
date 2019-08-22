@@ -26,7 +26,7 @@ class Round
     puts "Guess: #{g}"
     fb = maker.give_feedback
     puts "Feedback: #{fb}"
-    maker.previous = [g, fb]
+    breaker.previous_data = [g, fb]
   end
 
   def guessed?
