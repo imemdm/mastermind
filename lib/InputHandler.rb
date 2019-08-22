@@ -1,6 +1,11 @@
 class InputHandler
   def self.make_code
-    puts "Make a code:\n"
+    puts "Make a code\n"
+    [0, 0, 0, 0].map { |n| get_digit }
+  end
+
+  def self.guess_code
+    puts "Guess the code\n"
     [0, 0, 0, 0].map { |n| get_digit }
   end
 
