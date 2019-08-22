@@ -20,7 +20,7 @@ class Maker
   attr_reader :player
 
   def generate_code
-    player.status == :human ? handle_code_input : random_code
+    player.status == :human ? InputHandler.make_code : random_code
   end
 
   # Generates a code with 4 random elements
