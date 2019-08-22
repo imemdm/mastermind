@@ -1,8 +1,9 @@
-require "./Player.rb"
-require "./Maker.rb"
-require "./Breaker.rb"
-require "./Round.rb"
-require "./Game.rb"
-require "./AI.rb"
+require "./lib/Player.rb"
+require "./lib/Maker.rb"
+require "./lib/Breaker.rb"
+require "./lib/Round.rb"
+require "./lib/Game.rb"
+require "./lib/AI.rb"
+require "./lib/InputHandler"
 
 Game.start
