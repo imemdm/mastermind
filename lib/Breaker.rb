@@ -1,5 +1,5 @@
 class Breaker
-  attr_reader :name, :ai, :current_guess
+  attr_reader :ai, :current_guess
 
   def initialize(player)
     @player = player
