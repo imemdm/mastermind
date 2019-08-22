@@ -18,9 +18,9 @@ class AI
   def attempt(data)
     g = nil
     if data.empty?
-      g = self.guess
+      g = guess
     else
-      self.s = eliminate(self.s, data)
+      self.s = eliminate(s, data)
       g = minimax
     end
     self.codes -= [g]
@@ -32,10 +32,10 @@ class AI
   # from the possible solutions
   def minimax
     next_guess = nil
-    hit_counts = self.codes.map do |guess|
+    hit_counts = codes.map do |guess|
       max_hits = 0
       @@feedbacks.each do |fb|
-        remaining = eliminate(self.s, {guess: guess, feedback: fb})
+        remaining = eliminate(s, {guess: guess, feedback: fb})
         if remaining.length > max_hits
           max_hits = remaining.length
         end
@@ -53,7 +53,7 @@ class AI
     end
 
     minimums.each do |el|
-      if self.s.include?(el[:guess])
+      if s.include?(el[:guess])
         next_guess = el[:guess]
         break
       end
@@ -69,7 +69,7 @@ class AI
   # same response as the hidden pattern against a guess
   def eliminate(collection, data)
     collection.select do |solution|
-      fb = self.maker.feedback(data[:guess], solution)
+      fb = maker.feedback(data[:guess], solution)
       fb[0] == data[:feedback][0] && fb[1] == data[:feedback][1]
     end
   end
