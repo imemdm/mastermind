@@ -1,10 +1,7 @@
 class Maker
-  attr_accessor :pattern, :points
-
   def initialize(player)
     @player = player
     @code = generate_code
-    @pattern = nil
   end
 
   def give_feedback(on:)
@@ -30,13 +27,9 @@ class Maker
     end
   end
 
-  # Generates a code with 4 random elements from @possibilites
+  # Generates a code with 4 random elements
   def generate_random_code
-    code = []
-    4.times do
-      code << rand(0..5)
-    end
-    self.pattern = code
+    [0, 0, 0, 0].map { |n| rand(6) }
   end
 
   # Human player creates a hidden pattern
