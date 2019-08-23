@@ -4,7 +4,7 @@ class Breaker
 
   def initialize(player)
     @player = player
-    @ai = nil
+    @ai = AI.new
     @current_guess = nil
     @previous_data = []
   end
