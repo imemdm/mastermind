@@ -1,6 +1,6 @@
 class Breaker
-  attr_writer :previous_data
-  attr_reader :ai, :current_guess
+  attr_accessor :current_guess, :previous_data
+  attr_reader :ai
 
   def initialize(player)
     @player = player
@@ -17,8 +17,7 @@ class Breaker
 
   private
 
-  attr_writer :current_guess
-  attr_reader :previous_data, :player
+  attr_reader :player
 
   # Required logic for the computer to make a guess
   def generate_guess
