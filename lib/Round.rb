@@ -31,7 +31,6 @@ class Round
   end
 
   def guessed?
-    puts "Code: #{maker.code} | Guess: #{breaker.current_guess}"
     maker.code == breaker.current_guess
   end
 
