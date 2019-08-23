@@ -40,6 +40,6 @@ class Game
 
   # Displays details of the winning player
   def show_winner(game_winner)
-    puts "#{game_winner.name.to_s} has won the game with #{game_winner.points}"
+    puts "#{game_winner.status.to_s} has won the game with #{game_winner.points}"
   end 
 end
