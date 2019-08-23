@@ -35,6 +35,6 @@ class Round
 
   def complete
     puts "Code Breaker has guessed the code - #{round_score} points won" if guessed?
-    players.first.points += round_score
+    maker.player.points += round_score
   end
 end
