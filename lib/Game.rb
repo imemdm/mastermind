@@ -33,13 +33,8 @@ class Game
 
   # Compares the scores of both players
   def settle
-    puts "Game is a DRAW" if players.first.points == players.last.points
-    winner = players.sort_by { |player| player.points }.last
+    players = players.sort_by { |player| player.points }.last
+    players.first.points == players.last.points ?  puts "Game is a DRAW" : puts "#{players.last.status.capitalize} has won the game with #{players.last.points}"
     show_winner(winner)
   end
-
-  # Displays details of the winning player
-  def show_winner(game_winner)
-    puts "#{game_winner.status.to_s} has won the game with #{game_winner.points}"
-  end 
 end
