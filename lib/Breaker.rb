@@ -6,7 +6,7 @@ class Breaker
     @player = player
     @ai = AI.new
     @current_guess = nil
-    @previous_data = nil
+    @previous_data = []
   end
 
   # Generic method that outputs all guesses
