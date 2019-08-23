@@ -10,7 +10,6 @@ class AI
   def initialize
     @codes = (0..5).to_a.repeated_permutation(4).to_a
     @guess = [1, 1, 2, 2] 
-    @maker = CodeMaker.new
     @s = @codes.dup
   end
 
@@ -69,7 +68,7 @@ class AI
   # same response as the hidden pattern against a guess
   def eliminate(collection, data)
     collection.select do |solution|
-      fb = maker.give_feedback(on: data[0],code: solution)
+      fb = Maker.give_feedback(data[0], solution)
       fb[0] == data[1][0] && fb[1] == data[1][1]
     end
   end

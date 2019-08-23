@@ -24,7 +24,7 @@ class Round
   def turn
     g = breaker.guess
     puts "Guess: #{g}"
-    fb = maker.give_feedback
+    fb = Maker.give_feedback(g, maker.code)
     puts "Feedback: #{fb}"
     breaker.previous_data = [g, fb]
   end

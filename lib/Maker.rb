@@ -4,10 +4,10 @@ class Maker
     @code = generate_code
   end
 
-  def give_feedback(on:, code: self.code)
+  def self.give_feedback(guess, code)
     code
-      .map.with_index { |el, idx| on[idx] == el ? "both" : el }
-      .map.with_index { |el, idx| on.include?(el) ? "value" : el }
+      .map.with_index { |el, idx| guess[idx] == el ? "both" : el }
+      .map.with_index { |el, idx| guess.include?(el) ? "value" : el }
       reduce([0, 0]) do |fb, peg|
         fb[0] += 1 if peg == "both"
         fb[1] += 1 if peg == "value"
