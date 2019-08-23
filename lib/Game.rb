@@ -39,7 +39,7 @@ class Game
   end
 
   # Displays details of the winning player
-  def winner(game_winner)
+  def show_winner(game_winner)
     puts "#{game_winner.name.to_s} has won the game with #{game_winner.points}"
   end 
 end
