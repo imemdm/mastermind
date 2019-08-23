@@ -25,7 +25,7 @@ class Round
     g = breaker.guess
     puts "Guess: #{g}"
     fb = Maker.give_feedback(g, maker.code)
-    puts "Feedback: #{fb}"
+    puts "Feedback: Correct - #{fb[0]} | Correct position - #{fb[1]}"
     breaker.previous_data = [g, fb]
   end
 
