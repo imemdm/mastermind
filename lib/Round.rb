@@ -11,7 +11,8 @@ class Round
       puts "\nTurn: #{counter}\n"
       turn
       break if guessed?
-      round_score = counter
+      self.round_score = counter
+      puts "round score: #{round_score}"
     end
     complete
   end
