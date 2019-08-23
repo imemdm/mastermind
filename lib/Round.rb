@@ -8,7 +8,7 @@ class Round
   # Plays a single round
   def play
     1.upto(12) do |counter|
-      puts "\nTurn: #{counter} - try again\n"
+      puts "\nTurn: #{counter}\n"
       turn
       break if guessed?
       round_score = counter
@@ -34,7 +34,8 @@ class Round
   end
 
   def complete
-    puts "Code Breaker has guessed the code - #{round_score} points won" if guessed?
+    puts "Code Breaker has guessed the code" if guessed?
+    puts "Round over. Code Maker points this round: #{round_score}"
     maker.player.points += round_score
   end
 end
