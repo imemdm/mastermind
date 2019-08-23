@@ -19,7 +19,7 @@ class Round
   private
 
   attr_accessor :round_score
-  attr_reader :maker, :breaker
+  attr_reader :maker, :breaker, :players
 
   def turn
     g = breaker.guess
@@ -34,7 +34,7 @@ class Round
   end
 
   def complete
-    puts "Code Breaker has guessed the code" if guessed?
+    puts "Code Breaker has guessed the code - #{round_score} points won" if guessed?
     players.first.points += round_score
   end
 end
