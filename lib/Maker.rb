@@ -7,6 +7,8 @@ class Maker
   end
 
   def self.give_feedback(guess, code)
+    puts "guess #{guess}"
+    puts "code #{code}"
     code
       .map.with_index { |el, idx| guess[idx] == el ? "both" : el }
       .map.with_index { |el, idx| guess.include?(el) ? "value" : el }

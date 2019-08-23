@@ -34,7 +34,7 @@ class AI
     hit_counts = codes.map do |guess|
       max_hits = 0
       @@feedbacks.each do |fb|
-        remaining = eliminate(s, {guess: guess, feedback: fb})
+        remaining = eliminate(s, [guess, fb])
         if remaining.length > max_hits
           max_hits = remaining.length
         end
