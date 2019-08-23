@@ -21,7 +21,7 @@ class Breaker
   attr_reader :previous_data, :player
 
   # Required logic for the computer to make a guess
-  def generate_guess(old_data)
+  def generate_guess
     code = []
     if ai.nil?
       4.times { code << rand(6) }
