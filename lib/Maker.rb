@@ -1,4 +1,6 @@
 class Maker
+  attr_reader :code
+   
   def initialize(player)
     @player = player
     @code = generate_code
