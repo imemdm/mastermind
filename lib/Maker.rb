@@ -1,5 +1,5 @@
 class Maker
-  attr_reader :code
+  attr_reader :code, :player
 
   def initialize(player)
     @player = player
@@ -20,8 +20,6 @@ class Maker
   end
   
   private
-
-  attr_reader :player
 
   def generate_code
     player.status == :human ? InputHandler.make_code : random_code
