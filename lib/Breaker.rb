@@ -10,7 +10,7 @@ class Breaker
   end
 
   # Generic method that outputs all guesses
-  def guess(name, data)
+  def guess
     current_guess = player.status == :computer ? 
       generate_guess : InputHandler.make_guess
   end
