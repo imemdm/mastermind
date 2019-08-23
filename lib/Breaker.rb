@@ -18,7 +18,7 @@ class Breaker
   private
 
   attr_writer :current_guess
-  attr_reader :previous_data
+  attr_reader :previous_data, :player
 
   # Required logic for the computer to make a guess
   def generate_guess(old_data)
